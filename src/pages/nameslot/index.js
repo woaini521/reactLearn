@@ -4,6 +4,7 @@ import Bar from "./components/Bar"
 import Barname from "./components/Barname"
 import Barscope from "./components/Barscope"
 import Tar from "./components/Tar"
+import Barchildren from "./components/Barchildren"
 import ThemContext from "../../context";
 function Add({user}){
   return (
@@ -62,6 +63,11 @@ class Nameslot extends React.Component {
            { (name)=><Add data-position="down" user={name}></Add>}
           </Barscope>
           <Tar Container={<Container />}  left={<Left />} right={<Right />}> </Tar>
+           <Barchildren>
+               <div>1111111111</div>
+               <Add user='xiaoxiao'></Add>
+               <Add user='xiao'></Add>
+           </Barchildren>
       </div>
     )
   }
