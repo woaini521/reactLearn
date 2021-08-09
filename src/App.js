@@ -11,7 +11,9 @@ import NameSlot from "./pages/nameslot";
 import Communication from "./pages/communication";
 import Classtyle from "./pages/Classtyle";
 import Higherorder from "./pages/Higherorder";
+import Hook from "./pages/Hook";
 import Hoc from "./pages/Hoc";
+import Release from "./pages/release";
 import ThemContext from "./context";
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +29,9 @@ class App extends React.Component {
       <ThemContext.Provider value={this.state.obj}>
         <Router>
           <Switch>
-            <Route path="/" component={Hoc}></Route>
+            <Route path="/" component={Release}></Route>
+            <Route path="/Hook" component={Hook}></Route>
+            <Route path="/Hoc" component={Hoc}></Route>
             <Route path="/Higherorder" component={Higherorder}></Route>
             <Route path="/Classtyle" component={Classtyle}></Route>
             <Route path="/NameSlot" component={NameSlot}></Route>

@@ -1,0 +1,25 @@
+react-hooks是react16.8以后，react新增的钩子API，目的是增加代码的可复用性，逻辑性，弥补无状态组件没有生命周期，
+没有数据管理状态state的缺陷。
+笔者认为，react-hooks思想和初衷，也是把组件，颗粒化，单元化，形成独立的渲染环境，减少渲染次数，优化性能。
+
+第二项为派发数据更新，组件渲染的函数，函数的参数即是需要更新的值。useState和useReduce 作为能够触发组件重新渲染的hooks,
+我们在使用useState的时候要特别注意的是，useState派发更新函数的执行，就会让整个function组件从头到尾执行一次，
+所以需要配合useMemo，usecallback等api配合使用，这就是我说的为什么滥用hooks会带来负作用的原因之一了。
+state的值是不能即时改变的，只有当下一次上下文执行的时候，state值才随之改变。
+
+useEffect 组件更新副作用钩子  如果你想在function组件中，当组件完成挂载，dom渲染完成，做一些操纵dom,请求数据，那么useEffect是一个不二选择，
+
+useLayoutEffect 渲染更新之前的 useEffect
+
+useEffect 执行顺序 组件更新挂载完成 -> 浏览器dom 绘制完成 -> 执行useEffect回调 。
+
+useLayoutEffect 执行顺序 组件更新挂载完成 -> 执行useLayoutEffect回调-> 浏览器dom 绘制完成
+
+所以说useLayoutEffect 代码可能会阻塞浏览器的绘制  如果我们在useEffect 重新请求数据，渲染视图过程中，肯定会造成画面闪动的效果,而如果用useLayoutEffect ，回调函数的代码就会阻塞浏览器绘制，所以可定会引起画面卡顿等效果，那么具体要用 useLayoutEffect 还是 useEffect ，要看实际项目的情况，大部分的情况 useEffect 都可以满足的
+
+useReducer 无状态组件中的redux  dispatch 的触发会触发组件的更新，这里能够促使组件从新的渲染的一个是useState派发更新函数，
+另一个就 useReducer中的dispatch
+
+useMemo 小而香性能优化  useMemo我认为是React设计最为精妙的hooks之一，优点就是能形成独立的渲染空间，能够使组件，变量按照约定好规则更新。渲染条件依赖于第二个参数deps。
+
+seCallback 与 useMemo 一个缓存的是函数，一个缓存的是函数的返回就结果。useCallback 是来优化子组件的，防止子组件的重复渲染。useMemo 可以优化当前组件也可以优化子组件，优化当前组件主要是通过 memoize 来将一些复杂的计算逻辑进行缓存。当然如果只是进行一些简单的计算也没必要使用 useMemo，这里可以考虑一些计算的性能消耗和比较 inputs 的性能消耗来做一个权衡
