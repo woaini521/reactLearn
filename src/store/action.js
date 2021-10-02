@@ -4,10 +4,9 @@ export const Login = () => {
   return (dispatch) => {
     axios
       .get(
-        "https://mock.mengxuegu.com/mock/61108f2b0f12550baa9b6817/example/talk"
+        "https://mock.mengxuegu.com/mock/61108f2b0f12550baa9b6817/example/admin"
       )
       .then((res) => {
-        console.log(res.data.data, 2222);
         dispatch({
           type: LOGIN,
           payload: {
@@ -30,10 +29,9 @@ export const actions = {
     return (dispatch) => {
       axios
         .get(
-          "https://mock.mengxuegu.com/mock/61108f2b0f12550baa9b6817/example/talk"
+          "https://mock.mengxuegu.com/mock/61108f2b0f12550baa9b6817/example/admin"
         )
         .then((res) => {
-          console.log(res.data.data, 2222);
           dispatch({
             type: LOGIN,
             payload: {
@@ -44,9 +42,50 @@ export const actions = {
         });
     };
   },
-  Loginout:() =>{
+  Loginout: () => {
     return {
-        type: LOGOUT,
-      };
-  }
+      type: LOGOUT,
+    };
+  },
+};
+
+export const actionSaga = {
+  Login: () => {
+    return { type: "login", payload: payload };
+  },
+  // Numadd: () => {
+  //   return {
+  //     type: "numAdd",
+  //   };
+  // },
+  Numadd: () => {
+    return {
+      type: "numAdd",
+    };
+  },
+  NumIncrease: () => {
+    return {
+      type: "numIncrease",
+    };
+  },
+  sagaAdd: () => {
+    return {
+      type: "sagaAdd",
+    };
+  },
+  sagaLogin: () => {
+    return {
+      type: "sagaLogin",
+    };
+  },
+  sagaIncrease: () => {
+    return {
+      type: "numIncrease",
+    };
+  },
+  addText: () => {
+    return {
+      type: "addText",
+    };
+  },
 };
