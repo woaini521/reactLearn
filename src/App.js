@@ -21,13 +21,11 @@ class App extends React.Component {
   };
   render() {
     return (
-      <ThemContext.Provider value={this.state.obj}>
-        <Router>
-          <Switch>
-            <Route path="/" component={Dva}></Route>
-          </Switch>
-        </Router>
-      </ThemContext.Provider>
+      <Router>
+        <Switch>
+          <Route path="/" component={Dva}></Route>
+        </Switch>
+      </Router>
     );
   }
 }
