@@ -1,10 +1,16 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link,IndexRoute, Switch} from "react-router-dom"
-import Test1 from "./pages/test1"
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  IndexRoute,
+  Switch,
+} from "react-router-dom";
+import Test1 from "./pages/test1";
 import Dva from "./pages/Dva";
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   render() {
     return (
@@ -14,8 +20,8 @@ class App extends React.Component {
           <Route path="Dva" component={Dva}></Route>
         </Switch>
       </Router>
-    )
+    );
   }
 }
 
-default export App;
+export default App;
